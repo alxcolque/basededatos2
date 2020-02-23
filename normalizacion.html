@@ -24,7 +24,7 @@
       <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="index.php"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+      <a class="navbar-brand js-scroll-trigger" href="./"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -70,37 +70,59 @@
         <div class="card mb-3">
             <div class="card-header">
                 <b>¿Por qué es importante la normalización de base de datos?</b>
-                <p>La nomalización de una base de datos es el </p>
-                </div>
+
+            </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                    <thead><tr class="text-black text-center">
-                        <th>Cantidad</th>
-                        <th>Fecha</th>
-                        <th>Insumo</th>
-                        <th>Tienda</th>
-                        <th>Accion</th>
-                    </tr></thead>
-                    <tbody>
-                            <tr>
-                            <td>{{$IStock->cantidad}}</td>
-                            <td>{{$IStock->fecha}}</td>
-                            <td>{{$IStock->FInsStock_ToInsumo->insumo}}</td>
-                            <td>{{$IStock->FInsStock_ToTienda->tienda}}</td>
-                            <td>
-                                <div class="float-left">
-                                <a href="{{route('insumos_stocks.edit',$IStock->id)}}"><i class="btn btn-block btn-secondary fa fa-edit"></i></a>
-                                    <form  action="{{route('insumos_stocks.destroy',$IStock->id)}}" method="POST">
-                                    
-                                    <a><button class="btn btn-block btn-danger btn fa fa-trash"></button></a>
-                                    </form>
-                                </div>
-                                </td>
-                            </tr>
-                    </tbody>
-                </table>
-                </div>
+
+              <p>Las bases de datos relacionales se normalizan para: </p>
+              <li>Evitar la redundancia de los datos.</li>
+              <li>Disminuir problemas de actualización de los datos en las tablas</li>
+              <li>Proteger la integridad de los datos.</li>
+              <p>En el modelo relacional es frecuente llamar tabla a una relación; para que la tabla sea considerada como una relación tiene que cumplir con algunas restricciones:</p>
+              <li>Cada tabla debe tener su nombre único.</li>
+              <li>No puede haber filas iguales. No se permiten los duplicados.</li>
+              <li>Todos los datos en una columna deben ser del mismo tipo.</li>
+
+              <b>Dependencia funcional transitiva</b>
+              <p>Sean X, Y, Z tres atributos (o grupos de atributos) de la misma entidad. Si Y depende funcionalmente de X y Z de Y, pero X no depende funcionalmente de Y, se dice entonces que Z depende transitivamente de X. Simbólicamente sería: </p>
+              <p>X -> Y -> Z entonces X -> Z </p>
+              <p>
+FechaDeNacimiento -> Edad -> Conducir
+</p>
+              <p>Entonces entendemos que FechaDeNacimiento determina a Edad y la Edad determina a Conducir, indirectamente podemos saber a través de FechaDeNacimiento a Conducir (En muchos países, una persona necesita ser mayor de cierta edad para poder conducir un automóvil, por eso se utiliza este ejemplo). </p>
+              <img class="img-fluid" src="img/FN.jpg" alt="">
+              <div class="row">
+
+								<div class="card-body">
+										<ul class="list-group">
+												<li class="list-group-item"><span class="m-l-10 text-secondary "><b>PRIMERA FORMA NORMAL (1FN)</b></li>
+												<li class="list-group-item"><span class="m-l-10 text-secondary">Una Tabla está en primera forma normal si: <br></span>
+                        <span >•	Todos los atributos son atómicos. <br> Un atributo es atómico si los elementos del dominio son simples e indivisibles. <br>
+                        •		No debe existir variación en el número de columnas.<br>
+                        •		Los campos no clave deben identificarse por la clave (dependencia funcional).<br>
+                        •		Debe existir una independencia del orden tanto de las filas como de las columnas; <br> es decir, si los datos cambian de orden no deben cambiar sus significados.
+                        <br><br> Esta forma normal elimina los valores repetidos dentro de una base de datos.
+                        </span></li>
+										</ul>
+								</div>
+								<div class="card-body" id="sec_crea">
+										<ul class="list-group">
+												<li class="list-group-item"><span class="m-l-10 text-secondary">Incia: <span class="m-l-10 text-primary" id="fecha">24 de November de 2019</span></span></li>
+												<li class="list-group-item"><span class="m-l-10 text-secondary">Tiempo restante: <span class="m-l-10  text-success " id="tiempo_restante">Tiempo Completado</span></span></li>
+										</ul>
+								</div>
+								<div class="card-body" id="sec_en_jue">
+										<ul class="list-group">
+												<li class="list-group-item"><span class="m-l-10 text-secondary">En juego: <span class="m-l-10 text-primary" id="tiempo_jueg"></span></span></li>
+										</ul>
+								</div>
+								<div class="card-body" id="sec_ter">
+										<ul class="list-group">
+												<li class="list-group-item"><span class="m-l-10 text-secondary">Duró: <span class="m-l-10 text-primary" id="duracion"></span></span></li>
+										</ul>
+								</div>
+
+              </div>
             </div>
         </div>
         <!--/.col-->
@@ -128,7 +150,7 @@
                                 <div class="float-left">
                                 <a href="{{route('insumos_stocks.edit',$IStock->id)}}"><i class="btn btn-block btn-secondary fa fa-edit"></i></a>
                                     <form  action="{{route('insumos_stocks.destroy',$IStock->id)}}" method="POST">
-                                    
+
                                     <a><button class="btn btn-block btn-danger btn fa fa-trash"></button></a>
                                     </form>
                                 </div>
