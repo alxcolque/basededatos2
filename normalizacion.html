@@ -173,46 +173,48 @@ FechaDeNacimiento -> Edad -> Conducir
 
                 <div class="card-body">
                     <ul class="list-group">
-                      <b>pedidos</b><p>(nuped, fec, prov, nupov, nomprov, dir, nuprod, desc, pu, cant, tot, imptot)</p>
+                      <p><b>pedido</b>(nuped, fec, nuprov, nomprov, dir, nuprod, desc, pu, cant, tot, imptot)</p>
                     </ul>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
                         <li class="list-group-item"><span class="m-l-10 text-secondary "><b>1FN</b></li>
-                        <li class="list-group-item"><span class="m-l-10 text-secondary">Una relación está en 1FN si cumple la propiedad de que sus dominios no tienen elementos que a su vez sean conjuntos. Toda relacion Normalizada o sea con valores atómicos de los atributos está en 1FN. <br></span>
-                        <p><b>pedidos</b>(<u>nuped</u>, fec, nomprov, dir, imptot)</p>
-                        <p><b>producto</b>(<u>nuped</u>, <u>nuprod</u>,prov, esc, pu, cant, tot)</p>
-
+                        <li class="list-group-item"><span class="m-l-10 text-secondary">Una relación está en 1FN si cumple la propiedad de que sus dominios no tienen elementos que a su vez sean conjuntos.
+                          Toda relación Normalizada o sea con valores atómicos de los atributos está en 1FN <br></span>
+                        <p><b>pedido</b>(<u>nuped</u>, fec, nuprov, nomprov, dir, imptot)</p>
+                        <p><b>producto</b>(<u>nuped</u>, <u>nuprod</u>, desc, pu, cant, tot)</p>
+                        </li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
                         <li class="list-group-item"><span class="m-l-10 text-secondary "><b>2FN</b></li>
                         <li class="list-group-item"><span class="m-l-10 text-secondary"></span>
-                        <span >•	La tabla se encuentra en FNBC si cada determinante, atributo que determina completamente a otro, es clave candidata.  <br>
-                        •		Deberá registrarse de forma anillada ante la presencia de un intervalo seguido de una formalización perpetua, es decir las variantes creadas, en una tabla no se llegaran a mostrar, si las ya planificadas, dejan de existir.<br>
-                        </span></li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b>CUARTA FORMA NORMAL (4FN)</b></li>
-                        <li class="list-group-item"><span class="m-l-10 text-secondary">Una tabla se encuentra en 4FN si, y solo si, para cada una de sus dependencias multivaluadas no funcionales X -> Y,
-                          siendo X una super-clave que, X es una clave candidata o un conjunto de claves primarias. </span>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b>QUINTA FORMA NORMAL (5FN)</b></li>
-                        <li class="list-group-item"><span class="m-l-10 text-secondary">Una tabla se encuentra en 4FN si: <br></span>
-                        <span >•	La tabla está en 4FN. <br>
-                        •		No existen relaciones de dependencia de reunión (join) no triviales que no se generan desde las claves. <br>
-                        •		Una tabla que se encuentra en la 4FN se dice que está en 5FN si, y solo si, cada relación de dependencia de reunión (join) se encuentra definida por claves candidatas.<br>
-                        •		Por lo que si se aplicará una consulta entre al menos tres relaciones independientes entre sí dentro de la 4FN y se obtuvieran tuplas espurias, entonces no estaría dentro de la 5FN
-                        </span></li>
-                    </ul>
-                </div>
+                        <span >Una relación está en 2FN si está en 1FN y si o solo si los atributos
+                          NO llave son funcionales o completamente dependientes  de la llave primaria. <br>
+                        </span>
+                        <p><b>pedido</b>(<u>nuped</u>, fec, nuprov, nomprov, dir, imptot)</p>
+                        <p><b>ped_prod</b>(<u>nuped</u>, <u>nuprod</u>, cant, tot)</p>
+                        <p><b>producto</b>(<u>nuprod</u>,desc, pu)</p>
 
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b>3FN</b></li>
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"></span>
+                        <span >Una relación está en 3FN si está en 2FN si y solo si los atributos
+                        NO llave son independientes de cualquier otro atributo NO llave primaria<br>
+                        </span>
+                        <p><b>pedido</b>(<u>nuped</u>, <u>nuprov</u>, fec, imptot)</p>
+                        <p><b>proveed</b>(<u>nuprov</u>, nomprov, dir)</p>
+                        <p><b>ped_prod</b>(<u>nuped</u>, <u>nuprod</u>, cant, tot)</p>
+                        <p><b>producto</b>(<u>nuprod</u>,desc, pu)</p>
+
+                        </li>
+                    </ul>
+                </div>
               </div>
             </div>
         </div>
@@ -222,14 +224,8 @@ FechaDeNacimiento -> Edad -> Conducir
     <div class="container-fluid">
       <div class="card mb-3">
           <ul class="list-group">
-              <li class="list-group-item"><span class="m-l-10 text-secondary "><b>PRIMERA FORMA NORMAL (1FN)</b></li>
-              <li class="list-group-item"><span class="m-l-10 text-secondary">Una Tabla está en primera forma normal si: <br></span>
-              <span >•	Todos los atributos son atómicos. <br> Un atributo es atómico si los elementos del dominio son simples e indivisibles. <br>
-              •		No debe existir variación en el número de columnas.<br>
-              •		Los campos no clave deben identificarse por la clave (dependencia funcional).<br>
-              •		Debe existir una independencia del orden tanto de las filas como de las columnas; <br> es decir, si los datos cambian de orden no deben cambiar sus significados.
-              <br><br> Esta forma normal elimina los valores repetidos dentro de una base de datos.
-              </span></li>
+              <li class="list-group-item"><span class="m-l-10 text-secondary "><b>Referencias bibliográficas</b></li>
+              <li class="list-group-item"><span class="m-l-10 text-secondary"> <a href="https://es.wikipedia.org/wiki/Normalización_de_bases_de_datos"><u>Wikipedia base de datos</u></a> <br></span>
           </ul>
       </div>
     </div> <!-- .content -->
@@ -241,33 +237,34 @@ FechaDeNacimiento -> Edad -> Conducir
 
         <!-- Footer Location -->
         <div class="col-lg-4 mb-5 mb-lg-0">
-          <h4 class="text-uppercase mb-4">Location</h4>
-          <p class="lead mb-0">2215 John Daniel Drive
-            <br>Clark, MO 65243</p>
+          <h4 class="text-uppercase mb-4">Ciudad</h4>
+          <p class="lead mb-0">Oruro
+            <br>Carrera Sistemas informática, Centro</p>
         </div>
 
         <!-- Footer Social Icons -->
         <div class="col-lg-4 mb-5 mb-lg-0">
-          <h4 class="text-uppercase mb-4">Around the Web</h4>
+          <h4 class="text-uppercase mb-4">Síguenos</h4>
+          <a class="btn btn-outline-light btn-social mx-1" >
+            <i class="fab fa-fw fa-whatsapp"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-telegram"></i>
+          </a>
           <a class="btn btn-outline-light btn-social mx-1" href="#">
             <i class="fab fa-fw fa-facebook-f"></i>
           </a>
           <a class="btn btn-outline-light btn-social mx-1" href="#">
             <i class="fab fa-fw fa-twitter"></i>
           </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#">
-            <i class="fab fa-fw fa-linkedin-in"></i>
-          </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#">
-            <i class="fab fa-fw fa-dribbble"></i>
-          </a>
+
         </div>
 
         <!-- Footer About Text -->
         <div class="col-lg-4">
-          <h4 class="text-uppercase mb-4">About Freelancer</h4>
-          <p class="lead mb-0">Freelance is a free to use, MIT licensed Bootstrap theme created by
-            <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+          <h4 class="text-uppercase mb-4">Acerca del desarrollador</h4>
+          <p class="lead mb-0">Desarrollado por COL
+            <!--<a href="http://startbootstrap.com">Start Bootstrap</a>.</p>-->
         </div>
 
       </div>
@@ -277,7 +274,7 @@ FechaDeNacimiento -> Edad -> Conducir
   <!-- Copyright Section -->
   <section class="copyright py-4 text-center text-white">
     <div class="container">
-      <small>Copyright &copy; Your Website 2019</small>
+      <small>Copyright &copy; Website 2020</small>
     </div>
   </section>
 
