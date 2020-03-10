@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Base de datos II</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+      <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="./"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#teoria">Definición</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#ejemplos">Ejercicios</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#propuestos">Propuestos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- Masthead -->
+<header class="masthead bg-success text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+      <!-- Masthead Avatar Image -->
+
+      <!-- Masthead Heading -->
+      <h4 class="text-uppercase">Normalización de la Base de Datos</h4>
+      <p class="masthead-subheading font-weight-light mb-0">Por: Colque</p>
+
+    </div>
+  </header>
+  <section class="" id="teoria">
+    <div class="container-fluid">
+        <br>
+        <div class="col-sm-12">
+            <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                <span class="badge badge-pill badge-success">Hola</span> Bienvenido al sitio.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <!--/.col-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <b>¿Por qué es importante la normalización de base de datos?</b>
+
+            </div>
+            <div class="card-body">
+
+              <p>Las bases de datos relacionales se normalizan para: </p>
+              <li>Evitar la redundancia de los datos.</li>
+              <li>Disminuir problemas de actualización de los datos en las tablas</li>
+              <li>Proteger la integridad de los datos.</li>
+              <p>En el modelo relacional es frecuente llamar tabla a una relación; para que la tabla sea considerada como una relación tiene que cumplir con algunas restricciones:</p>
+              <li>Cada tabla debe tener su nombre único.</li>
+              <li>No puede haber filas iguales. No se permiten los duplicados.</li>
+              <li>Todos los datos en una columna deben ser del mismo tipo.</li>
+
+              <b>Dependencia funcional transitiva</b>
+              <p>Sean X, Y, Z tres atributos (o grupos de atributos) de la misma entidad. Si Y depende funcionalmente de X y Z de Y, pero X no depende funcionalmente de Y, se dice entonces que Z depende transitivamente de X. Simbólicamente sería: </p>
+              <p>X -> Y -> Z entonces X -> Z </p>
+              <p>
+FechaDeNacimiento -> Edad -> Conducir
+</p>
+              <p>Entonces entendemos que FechaDeNacimiento determina a Edad y la Edad determina a Conducir, indirectamente podemos saber a través de FechaDeNacimiento a Conducir (En muchos países, una persona necesita ser mayor de cierta edad para poder conducir un automóvil, por eso se utiliza este ejemplo). </p>
+              <img class="img-fluid" src="img/FN.jpg" alt="">
+              <div class="row">
+
+								<div class="card-body">
+										<ul class="list-group">
+												<li class="list-group-item"><span class="m-l-10 text-secondary "><b>PRIMERA FORMA NORMAL (1FN)</b></li>
+												<li class="list-group-item"><span class="m-l-10 text-secondary">Una Tabla está en primera forma normal si: <br></span>
+                        <span >•	Todos los atributos son atómicos. <br> Un atributo es atómico si los elementos del dominio son simples e indivisibles. <br>
+                        •		No debe existir variación en el número de columnas.<br>
+                        •		Los campos no clave deben identificarse por la clave (dependencia funcional).<br>
+                        •		Debe existir una independencia del orden tanto de las filas como de las columnas; <br> es decir, si los datos cambian de orden no deben cambiar sus significados.
+                        <br><br> Esta forma normal elimina los valores repetidos dentro de una base de datos.
+                        </span></li>
+										</ul>
+								</div>
+                <div class="card-body">
+										<ul class="list-group">
+												<li class="list-group-item"><span class="m-l-10 text-secondary "><b>SEGUNDA FORMA NORMAL (2FN)</b></li>
+												<li class="list-group-item"><span class="m-l-10 text-secondary">Dependencia funcional. <br></span>
+                        <span >•	Una relación está en 2FN si está en 1FN  <br>
+                        •		si los atributos que no forman parte de ninguna clave dependen de forma completa de la clave principal.<br> Es decir, que no existen dependencias parciales.<br>
+                        •		Todos los atributos que no son clave principal deben depender únicamente de la clave principal.
+                        </span></li>
+										</ul>
+								</div>
+                <div class="card-body">
+										<ul class="list-group">
+												<li class="list-group-item"><span class="m-l-10 text-secondary "><b>TERCERA FORMA NORMAL (3FN)</b></li>
+												<li class="list-group-item"><span class="m-l-10 text-secondary">La tabla se encuentra en 3FN si es 2FN y si no existe ninguna dependencia funcional transitiva en los atributos que no son clave. <br></span>
+
+										</ul>
+								</div>
+                <div class="card-body">
+										<ul class="list-group">
+												<li class="list-group-item"><span class="m-l-10 text-secondary "><b>FORMA NORMAL BOYCE CODD (FNBC)</b></li>
+												<li class="list-group-item"><span class="m-l-10 text-secondary"></span>
+                        <span >•	La tabla se encuentra en FNBC si cada determinante, atributo que determina completamente a otro, es clave candidata.  <br>
+                        •		Deberá registrarse de forma anillada ante la presencia de un intervalo seguido de una formalización perpetua, es decir las variantes creadas, en una tabla no se llegaran a mostrar, si las ya planificadas, dejan de existir.<br>
+                        </span></li>
+										</ul>
+								</div>
+                <div class="card-body">
+										<ul class="list-group">
+												<li class="list-group-item"><span class="m-l-10 text-secondary "><b>CUARTA FORMA NORMAL (4FN)</b></li>
+												<li class="list-group-item"><span class="m-l-10 text-secondary">Una tabla se encuentra en 4FN si, y solo si, para cada una de sus dependencias multivaluadas no funcionales X -> Y,
+                          siendo X una super-clave que, X es una clave candidata o un conjunto de claves primarias. </span>
+										</ul>
+								</div>
+                <div class="card-body">
+										<ul class="list-group">
+												<li class="list-group-item"><span class="m-l-10 text-secondary "><b>QUINTA FORMA NORMAL (5FN)</b></li>
+												<li class="list-group-item"><span class="m-l-10 text-secondary">Una tabla se encuentra en 4FN si: <br></span>
+                        <span >•	La tabla está en 4FN. <br>
+                        •		No existen relaciones de dependencia de reunión (join) no triviales que no se generan desde las claves. <br>
+                        •		Una tabla que se encuentra en la 4FN se dice que está en 5FN si, y solo si, cada relación de dependencia de reunión (join) se encuentra definida por claves candidatas.<br>
+                        •		Por lo que si se aplicará una consulta entre al menos tres relaciones independientes entre sí dentro de la 4FN y se obtuvieran tuplas espurias, entonces no estaría dentro de la 5FN
+                        </span></li>
+										</ul>
+								</div>
+
+              </div>
+            </div>
+        </div>
+
+    </div> <!-- .content -->
+  </section>
+  <section class="" id="ejemplos">
+    <div class="container-fluid">
+        <!--/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 1.</h2></b></li>
+
+                        <li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                      <p><b>pedido</b>(nuped, fec, nuprov, nomprov, dir, nuprod, desc, pu, cant, tot, imptot)</p>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b>1FN</b></li>
+                        <li class="list-group-item"><span class="m-l-10 text-secondary">Una relación está en 1FN si cumple la propiedad de que sus dominios no tienen elementos que a su vez sean conjuntos.
+                          Toda relación Normalizada o sea con valores atómicos de los atributos está en 1FN <br></span>
+                        <p><b>pedido</b>(<u>nuped</u>, fec, nuprov, nomprov, dir, imptot)</p>
+                        <p><b>producto</b>(<u>nuped</u>, <u>nuprod</u>, desc, pu, cant, tot)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b>2FN</b></li>
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"></span>
+                        <span >Una relación está en 2FN si está en 1FN y si o solo si los atributos
+                          NO llave son funcionales o completamente dependientes  de la llave primaria. <br>
+                        </span>
+                        <p><b>pedido</b>(<u>nuped</u>, fec, nuprov, nomprov, dir, imptot)</p>
+                        <p><b>ped_prod</b>(<u>nuped</u>, <u>nuprod</u>, cant, tot)</p>
+                        <p><b>producto</b>(<u>nuprod</u>,desc, pu)</p>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b>3FN</b></li>
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"></span>
+                        <span >Una relación está en 3FN si está en 2FN si y solo si los atributos
+                        NO llave son independientes de cualquier otro atributo NO llave primaria<br>
+                        </span>
+                        <p><b>pedido</b>(<u>nuped</u>, <u>nuprov</u>, fec, imptot)</p>
+                        <p><b>proveed</b>(<u>nuprov</u>, nomprov, dir)</p>
+                        <p><b>ped_prod</b>(<u>nuped</u>, <u>nuprod</u>, cant, tot)</p>
+                        <p><b>producto</b>(<u>nuprod</u>,desc, pu)</p>
+
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!--ejercicio 2 /.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 2.</h2> </b> <p>Consideremos el documento ORDEN DE COMPRA de la figura 4, usado para colocar una orden depedido al proveedor de discos compactos.</p></li>
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                      <p><b>OrdenDeCompra</b>(ORD-NO, ORD-DATE, PROV-NO, PROV-NAME, PROV-DIR, PROV-NIT, CODIGO, TITULO, CANT, VR-UNIT)</p>
+                      <h5 class="m-l-10 text-secondary ">Figura 4<h5>
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e2.png" alt=""> </li>
+                      <p>Incluso las formas no normalizadas deben tener una llave. En el ejemplo de arriba, podemos deducirque ORD-NO es la llave. Las llaves usualmente son subrayadas durante el análisis ARD. </p>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN: </b>Separar el grupo repetitivo:</p></li>
+                        <li class="list-group-item"><span class="m-l-10 text-secondary">En la lista de arriba, los ítems después de PROV-NIT son repetitivos, esto quiere decir, que para unamisma orden aparecen varias veces,
+                          dado que en una misma orden se pueden encargar varias categorías, o varios títulos de la misma categoría. <br>
+                          Los grupos repetitivos deben ser separados y ser escritos como un grupo independiente con su respectiva llave. Este grupo debe relacionarse con el grupo no repetitivo
+                        </span>
+                        <p class="m-l-10 text-success"><b>GRUPO 1</b>(<u>ORD-NO</u>, ORD-DATE, PROV-NO , PROV-NAME, PROV-DIR, PROV-NIT)</p>
+                        <p class="m-l-10 text-danger"><b>GRUPO 2</b>(<u>ORD-NO</u>, <u>CODIGO</u>, TITULO , CANT , VR-UNIT)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><p><b>2FN: </b>Separar dependencias de las llaves compuestas.</p></li>
+                        <li class="list-group-item">
+                          <p class="m-l-10 text-success"><b>GRUPO 1</b>(<u>ORD-NO</u>, ORD-DATE, PROV-NO , PROV-NAME, PROV-DIR, PROV-NIT)</p>
+                          <p class="m-l-10 text-danger"><b>GRUPO 2</b>(<u>ORD-NO</u>, <u>CODIGO</u>, CANT)</p>
+                          <p class="m-l-10 text-primary"><b>GRUPO 3</b>(<u>CODIGO</u>, TITULO, VR-UNIT)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><p><b>3FN: </b>Examinar las interdependencias entre los campos o atributos que no son llaves.</p></li>
+                        <li class="list-group-item">
+                          <p class="m-l-10 text-success"><b>GRUPO 1</b>(<u>ORD-NO</u>, ORD-DATE, PROV-NO)</p>
+                          <p class="m-l-10 text-danger"><b>GRUPO 2</b>(<u>ORD-NO</u>, <u>CODIGO</u>, CANT)</p>
+                          <p class="m-l-10 text-primary"><b>GRUPO 3</b>(<u>CODIGO</u>, TITULO, VR-UNIT)</p>
+                          <p class="m-l-10 text-warning"><b>GRUPO 1</b>(<u>PROV-NO</u>, PROV-NAME, PROV-DIR, PROV-NIT)</p>
+
+                          <!-- About Section Button -->
+                          <div class="text-center mt-4">
+                            <a class="btn btn-xl btn-outline-light bg-success text-white mb-0" href="docs/Ej_Norm_Resuelto.pdf">
+                              <i class="fas fa-download mr-2"></i>
+                              Descargar PDF de este ejercicio!
+                            </a>
+                          </div>
+                        </li>
+
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 3.</h2> </b> <p>Este es el diseño inicial de las FACTURAS, al cual debemos aplicarle la metodología de las formas normales
+                          para ver si se trata de un buen diseño.</p></li>
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e3.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN </b></p></li>
+                        <li class="list-group-item"><span class="m-l-10 text-secondary">
+                          <p class="m-l-10 text-success"><b>FACTURA</b>(<u>Codigo_Factura</u>, Código_cliente, Nombre_cliente, Direccion_cliente, Población_cliente, Fecha_factura, Forma_pago)</p>
+                          <p class="m-l-10 text-danger"><b>DETALLE_FACTURA</b>(<u>Codigo_Factura</u>, <u>Código_articulo</u>, Descripcion , Cantidad, Importe, Tipo_IVA)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><p><b>2FN </b></p></li>
+                        <li class="list-group-item">
+                          <p class="m-l-10 text-success"><b>FACTURA</b>(<u>Codigo_Factura</u>, Código_cliente, Nombre_cliente, Direccion_cliente, Población_cliente, Fecha_factura, Forma_pago, Tipo_IVA)</p>
+                          <p class="m-l-10 text-danger"><b>DETALLE_FACTURA</b>(<u>Codigo_Factura</u>, <u>Código_articulo</u>, Cantidad, Importe)</p>
+                          <p class="m-l-10 text-primary"><b>ARTICULO</b>(<u>Código_articulo</u>, Descripcion)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><p><b>3FN </b></p></li>
+                        <li class="list-group-item">
+                          <p class="m-l-10 text-warning"><b>CLIENTE</b>(<u>Código_cliente</u>, Nombre_cliente, Direccion_cliente, Población_cliente)</p>
+                          <p class="m-l-10 text-success"><b>FACTURA</b>(<u>Codigo_Factura</u>, Código_cliente, Fecha_factura, Forma_pago, Tipo_IVA)</p>
+                          <p class="m-l-10 text-danger"><b>DETALLE_FACTURA</b>(<u>Codigo_Factura</u>, <u>Código_articulo</u>, Cantidad, Importe)</p>
+                          <p class="m-l-10 text-primary"><b>ARTICULO</b>(<u>Código_articulo</u>, Descripcion)</p>
+
+                        </li>
+
+                    </ul>
+                </div>
+
+              </div>
+            </div>
+        </div>
+
+    </div> <!-- .content -->
+  </section>
+  <section class="" id="propuestos">
+    <div class="container-fluid">
+      <div class="card mb-3">
+          <ul class="list-group">
+              <li class="list-group-item"><span class="m-l-10 text-secondary "><b>Referencias bibliográficas</b></li>
+              <li class="list-group-item"><span class="m-l-10 text-secondary"> <a href="https://es.wikipedia.org/wiki/Normalización_de_bases_de_datos"><u>Wikipedia base de datos</u></a> <br></span>
+          </ul>
+      </div>
+    </div> <!-- .content -->
+  </section>
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Ciudad</h4>
+          <p class="lead mb-0">Oruro
+            <br>Carrera Sistemas informática, Centro</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Síguenos</h4>
+          <a class="btn btn-outline-light btn-social mx-1" >
+            <i class="fab fa-fw fa-whatsapp"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-telegram"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Acerca del desarrollador</h4>
+          <p class="lead mb-0">Desarrollado por COL
+            <!--<a href="http://startbootstrap.com">Start Bootstrap</a>.</p>-->
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; Website 2020</small>
+    </div>
+  </section>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>
+</body>
+
+</html>

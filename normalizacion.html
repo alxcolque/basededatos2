@@ -165,9 +165,9 @@ FechaDeNacimiento -> Edad -> Conducir
               <div class="row">
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b>Ejemplo 1.</b></li>
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 1.</h2></b></li>
 
-                        <li> <img class="img-fluid" src="img/e1.png" alt=""> </li>
+                        <li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>
                     </ul>
                 </div>
 
@@ -218,6 +218,123 @@ FechaDeNacimiento -> Edad -> Conducir
               </div>
             </div>
         </div>
+        <!--ejercicio 2 /.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 2.</h2> </b> <p>Consideremos el documento ORDEN DE COMPRA de la figura 4, usado para colocar una orden depedido al proveedor de discos compactos.</p></li>
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                      <p><b>OrdenDeCompra</b>(ORD-NO, ORD-DATE, PROV-NO, PROV-NAME, PROV-DIR, PROV-NIT, CODIGO, TITULO, CANT, VR-UNIT)</p>
+                      <h5 class="m-l-10 text-secondary ">Figura 4<h5>
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e2.png" alt=""> </li>
+                      <p>Incluso las formas no normalizadas deben tener una llave. En el ejemplo de arriba, podemos deducirque ORD-NO es la llave. Las llaves usualmente son subrayadas durante el análisis ARD. </p>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN: </b>Separar el grupo repetitivo:</p></li>
+                        <li class="list-group-item"><span class="m-l-10 text-secondary">En la lista de arriba, los ítems después de PROV-NIT son repetitivos, esto quiere decir, que para unamisma orden aparecen varias veces,
+                          dado que en una misma orden se pueden encargar varias categorías, o varios títulos de la misma categoría. <br>
+                          Los grupos repetitivos deben ser separados y ser escritos como un grupo independiente con su respectiva llave. Este grupo debe relacionarse con el grupo no repetitivo
+                        </span>
+                        <p class="m-l-10 text-success"><b>GRUPO 1</b>(<u>ORD-NO</u>, ORD-DATE, PROV-NO , PROV-NAME, PROV-DIR, PROV-NIT)</p>
+                        <p class="m-l-10 text-danger"><b>GRUPO 2</b>(<u>ORD-NO</u>, <u>CODIGO</u>, TITULO , CANT , VR-UNIT)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><p><b>2FN: </b>Separar dependencias de las llaves compuestas.</p></li>
+                        <li class="list-group-item">
+                          <p class="m-l-10 text-success"><b>GRUPO 1</b>(<u>ORD-NO</u>, ORD-DATE, PROV-NO , PROV-NAME, PROV-DIR, PROV-NIT)</p>
+                          <p class="m-l-10 text-danger"><b>GRUPO 2</b>(<u>ORD-NO</u>, <u>CODIGO</u>, CANT)</p>
+                          <p class="m-l-10 text-primary"><b>GRUPO 3</b>(<u>CODIGO</u>, TITULO, VR-UNIT)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><p><b>3FN: </b>Examinar las interdependencias entre los campos o atributos que no son llaves.</p></li>
+                        <li class="list-group-item">
+                          <p class="m-l-10 text-success"><b>GRUPO 1</b>(<u>ORD-NO</u>, ORD-DATE, PROV-NO)</p>
+                          <p class="m-l-10 text-danger"><b>GRUPO 2</b>(<u>ORD-NO</u>, <u>CODIGO</u>, CANT)</p>
+                          <p class="m-l-10 text-primary"><b>GRUPO 3</b>(<u>CODIGO</u>, TITULO, VR-UNIT)</p>
+                          <p class="m-l-10 text-warning"><b>GRUPO 1</b>(<u>PROV-NO</u>, PROV-NAME, PROV-DIR, PROV-NIT)</p>
+
+                          <!-- About Section Button -->
+                          <div class="text-center mt-4">
+                            <a class="btn btn-xl btn-outline-light bg-success text-white mb-0" href="docs/Ej_Norm_Resuelto.pdf">
+                              <i class="fas fa-download mr-2"></i>
+                              Descargar PDF de este ejercicio!
+                            </a>
+                          </div>
+                        </li>
+
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 3.</h2> </b> <p>Este es el diseño inicial de las FACTURAS, al cual debemos aplicarle la metodología de las formas normales
+                          para ver si se trata de un buen diseño.</p></li>
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e3.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN </b></p></li>
+                        <li class="list-group-item"><span class="m-l-10 text-secondary">
+                          <p class="m-l-10 text-success"><b>FACTURA</b>(<u>Codigo_Factura</u>, Código_cliente, Nombre_cliente, Direccion_cliente, Población_cliente, Fecha_factura, Forma_pago)</p>
+                          <p class="m-l-10 text-danger"><b>DETALLE_FACTURA</b>(<u>Codigo_Factura</u>, <u>Código_articulo</u>, Descripcion , Cantidad, Importe, Tipo_IVA)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><p><b>2FN </b></p></li>
+                        <li class="list-group-item">
+                          <p class="m-l-10 text-success"><b>FACTURA</b>(<u>Codigo_Factura</u>, Código_cliente, Nombre_cliente, Direccion_cliente, Población_cliente, Fecha_factura, Forma_pago, Tipo_IVA)</p>
+                          <p class="m-l-10 text-danger"><b>DETALLE_FACTURA</b>(<u>Codigo_Factura</u>, <u>Código_articulo</u>, Cantidad, Importe)</p>
+                          <p class="m-l-10 text-primary"><b>ARTICULO</b>(<u>Código_articulo</u>, Descripcion)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><p><b>3FN </b></p></li>
+                        <li class="list-group-item">
+                          <p class="m-l-10 text-warning"><b>CLIENTE</b>(<u>Código_cliente</u>, Nombre_cliente, Direccion_cliente, Población_cliente)</p>
+                          <p class="m-l-10 text-success"><b>FACTURA</b>(<u>Codigo_Factura</u>, Código_cliente, Fecha_factura, Forma_pago, Tipo_IVA)</p>
+                          <p class="m-l-10 text-danger"><b>DETALLE_FACTURA</b>(<u>Codigo_Factura</u>, <u>Código_articulo</u>, Cantidad, Importe)</p>
+                          <p class="m-l-10 text-primary"><b>ARTICULO</b>(<u>Código_articulo</u>, Descripcion)</p>
+
+                        </li>
+
+                    </ul>
+                </div>
+
+              </div>
+            </div>
+        </div>
+
     </div> <!-- .content -->
   </section>
   <section class="" id="propuestos">
