@@ -170,7 +170,7 @@ FechaDeNacimiento -> Edad -> Conducir
                         <li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>
                     </ul>
                 </div>
-              
+
                 <div class="card-body">
                     <ul class="list-group">
                       <p><b>pedido</b>(nuped, fec, nuprov, nomprov, dir, nuprod, desc, pu, cant, tot, imptot)</p>
@@ -335,6 +335,363 @@ FechaDeNacimiento -> Edad -> Conducir
             </div>
         </div>
 
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 4.</h2> </b> <p>Transforma este diagrama ER de una Base de Datos a su correspondiente modelo relacional:
+                        </p></li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e4.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN, 2FN, 3FN </b></p></span></li>
+                        <li class="list-group-item"><span class="m-l-10 text-success"><p>
+                          <p><b class="m-l-10 text-danger">TPINACOTECA: </b>( Nombre Pinacoteca, Dirección, Ciudad, MetrosCuadrados)</p>
+                          <p><b class="m-l-10 text-danger">TCUADRO: </b>( CodCuadro, Técnica, Nombre, Dimensiones, Fecha creación, Nombre Pinacoteca(FK), CodPintor(FK))</p>
+                          <p><b class="m-l-10 text-danger">TPINTOR: </b>( CodPintor, Nombre, Ciudad, Nacion, FechaNac, FechaMuerte, Nombre escuela(FK))</p>
+                          <p><b class="m-l-10 text-danger">TMECENAS: </b>( Nombre mecenas, FechaNac, Nacionalidad, LugarNacimiento, FechaMuerte)</p>
+                          <p><b class="m-l-10 text-danger">TESCUELA: </b>( Nombre escuela, FechaCreacion, PaisdondeSurgio)</p>
+                          <p><b class="m-l-10 text-danger">TTener: </b>( CodPintor(FK),  Nombre mecenas(FK), relación)</p>
+                          <p><b class="m-l-10 text-danger">TEsMaestro: </b>(CodPintor(FK), CodMaestro(FK))</p></span>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 5.</h2> </b> <p>Dado el esquema ER de la figura inferior, pásalo al modelo relacionar aplicando las reglas usuales dederivación, teniendo en cuenta que las entidades tienen los siguientes atributos:
+                        </p>
+                        <p>-JUGADOR (DNI, NombreJugador, FechaNacimiento, Sueldo, Nacionalidad)</p>
+                        <p>-EQUIPO (NombreEquipo, Ciudad, Presidente)</p>
+                        <p>-PARTIDO (Código, Fecha, Resultado)</p>
+                      </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e5.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN, 2FN, 3FN </b></p></span></li>
+                        <li class="list-group-item"><span class="m-l-10 text-success"><p>
+                          <p><b class="m-l-10 text-danger">JUGADOR: </b>( DNI, NombreJugador, FechaNacimiento, Sueldo, Nacionalidad, NombreEquipo(FK))</p>
+                          <p><b class="m-l-10 text-danger">EQUIPO: </b>( NombreEquipo, Ciudad, Presidente)</p>
+                          <p><b class="m-l-10 text-danger">PARTIDO: </b>(Código, Fecha, Resultado)</p>
+                          <p><b class="m-l-10 text-danger">JUEGA: </b>( DNI(FK), Codigo(FK))</p>
+                          <p><b class="m-l-10 text-danger">DISPUTA: </b>(Código(FK)  ,  NombreEquipo(FK))</p>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 6.</h2></b>
+                        <p>Consideremos una base de datos en la que se relacionen distintos fabricantes de software con los programasque desarrollan, los comercios donde los venden y los clientes que los compran. Las relaciones entre ellos son:
+                        </p>
+                        <p>-Cada fabricante se caracteriza por un identificador único, tiene un nombre y pertenece a un país.</p>
+                        <p>-Todos los programas tienen un código que los distinguen de los demás. Además, tienen un nombre y unaversión. Por ejemplo, Microsoft Access 2000 tendría código. El código no sirve para distinguir cada CD deAccess 2000. Todos los CD de Access 2000 tendrían el mismo código.</p>
+                        <p>-Los comercios tienen un código de identificación fiscal (CIF), único para cada uno, tienen un nombre yse ubican en una ciudad.</p>
+                        <p>-Los clientes se caracterizan por su DNI, nombre y edad.</p>
+                        <p>-Es necesario conocer el número de unidades de cada programa que se distribuye a cada comercio.</p>
+                        <p>-Los clientes, una vez que adquieren el programa, se registran con el fabricante; el registro se puedehacer por diversos medios (Internet, tarjeta postal, teléfono, etc.) y debe quedar constancia del mismo.</p>
+                        <p>-Cada fabricante puede desarrollar muchos programas.</p>
+                        <p>-Los fabricantes se pueden aliar para desarrollar un mismo programa (por tanto, un programa puededesarrollarse por más de un fabricante).</p>
+                        <p>-Un mismo programa se puede distribuir entre muchos comercios y, a su vez, cada comercio puederecibir distribución de muchos programas distintos.</p>
+                        <p>-Un programa que se vende en un comercio puede registrarse a nombre de muchos clientes (por ejemplo, un determinado comercio puede vender muchas unidades de Microsoft Access 2000; cada una seregistraría a un cliente distinto).</p>
+                        <p>-Un mismo cliente puede registrar muchos programas distintos adquiridos en el mismo o en distintoscomercios.</p>
+                        <p>-Cada cliente que registra un programa, lo hace indicando el comercio donde lo adquirió. Por tanto, porcada cliente y programa sólo se puede indicar un comercio.</p>
+                        <p>Teniendo en cuenta las especificaciones anteriores diseña un modelo conceptual empleando la técnica ERpara luego pasarlo al modelo relacional.</p>
+                      </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e6.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN, 2FN, 3FN </b></p></span></li>
+                        <li class="list-group-item"><span class="m-l-10 text-success"><p>
+                          <p><b class="m-l-10 text-danger">Fabricantes: </b>( DNI, NombreJugador, FechaNacimiento, Sueldo, Nacionalidad, NombreEquipo(FK))</p>
+                          <p><b class="m-l-10 text-danger">Programa: </b>( Cod. programa, Nombre programa, Versión programa, Cantidad)</p>
+                          <p><b class="m-l-10 text-danger">Cliente: </b>( DNI, Nombre, Edad)</p>
+                          <p><b class="m-l-10 text-danger">Comercio: </b>( CIF, Nombre comercio, Ciudad)</p>
+                          <p><b class="m-l-10 text-danger">Registro: </b>(Modo registro, Fecha registro, Nombre comercio,DNI(FK), Cod. Fabricante(FK), Cod. programa(FK))</p>
+                          <p><b class="m-l-10 text-danger">Venta: </b>(DNI(FK), CIF(FK), Nombre programa(FK), Fecha venta, Importe)</p>
+                          <p><b class="m-l-10 text-danger">Distribuir: </b>(Nº unidades, CIF(FK), Cod. programa(FK))</p>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 7.</h2></b>
+                        <p>Transforma el siguiente esquema ER extendido a un esquema relacional. Se deberá obtener la transformaciónque proporcione accesos a la base de datos más eficiente, teniendo en cuenta que los subtipos E1 y E2 sediferencian en muy pocos atributos y que siempre que se accede a la entidad E se querrá toda la información, tantola del supertipo como la de los subtipos.
+                        </p>
+
+                      </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e7.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN, 2FN, 3FN </b></p></span></li>
+                        <li class="list-group-item"><span class="m-l-10 text-success"><p>
+                          <p><b class="m-l-10 text-danger">TA: </b>(CodA)</p>
+                          <p><b class="m-l-10 text-danger">TB: </b>( CodB, CodA(FK))</p>
+                          <p><b class="m-l-10 text-danger">TC: </b>( CodC)</p>
+                          <p><b class="m-l-10 text-danger">TD: </b>( CodD, CodC(FK))</p>
+                          <p><b class="m-l-10 text-danger">TE: </b>( CodE, tipo, Atributo3)</p>
+                          <p><b class="m-l-10 text-danger">TF: </b>( CodF, CodE(FK), atributo2)</p>
+                          <p><b class="m-l-10 text-danger">TA/F/C: </b>( CodA,  CodC,  CodF, atributo1)</p>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 8.</h2></b>
+                        <p>Transforma el siguiente esquema ER a un esquema relacional. Se sabe que los subtipos de la entidad B tienenmuchos atributos distintos y que en los accesos a esa entidad se querrán los atributos comunes.
+                        </p>
+                      </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e8.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN, 2FN, 3FN </b></p></span></li>
+                        <li class="list-group-item"><span class="m-l-10 text-success"><p>
+                          <p><b class="m-l-10 text-danger">TA: </b>(CodA, CodB(FK))</p>
+                          <p><b class="m-l-10 text-danger">TB1: </b>(CodB, Atributo1, Atributos B1)</p>
+                          <p><b class="m-l-10 text-danger">TB2: </b>(CodB, Atributo1, Atributos B2, CodD(FK))</p>
+                          <p><b class="m-l-10 text-danger">TB3: </b>(CodB, Atributo1, Atributos B3)</p>
+                          <p><b class="m-l-10 text-danger">TC: </b>(CodC)</p>
+                          <p><b class="m-l-10 text-danger">TD: </b>(CodD)</p>
+                          <p><b class="m-l-10 text-danger">TE: </b>(CodE, CodB(FK))</p>
+                          <p><b class="m-l-10 text-danger">TA/D/C: </b>(CodA(FK), CodC(FK), CodD(FK))</p>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 9.</h2></b>
+                        <p>Transforma el siguiente esquema ER a un esquema relacional. Se sabe que los subtipos de la entidad B tienenmuchos atributos distintos.
+                        </p>
+                      </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e9.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN, 2FN, 3FN </b></p></span></li>
+                        <li class="list-group-item"><span class="m-l-10 text-success"><p>
+                          <p><b class="m-l-10 text-danger">TA: </b>(CodA, CodB(FK))</p>
+                          <p><b class="m-l-10 text-danger">TB1: </b> (CodB, Atributo1, AtributosB1)</p>
+                          <p><b class="m-l-10 text-danger">TB2: </b>(CodB, Atributo1, AtributosB2)</p>
+                          <p><b class="m-l-10 text-danger">TB3: </b> (CodB, Atributo1, AtributosB3)</p>
+                          <p><b class="m-l-10 text-danger">TC: </b> (CodC, codA(FK))</p>
+                          <p><b class="m-l-10 text-danger">TD: </b>(CodD)</p>
+                          <p><b class="m-l-10 text-danger">TE: </b>(CodE, CodB(FK))</p>
+                          <p><b class="m-l-10 text-danger">TB2/D: </b>(CodB(FK), CodD(FK))</p>
+                          <p><b class="m-l-10 text-danger">TB3/E: </b>(CodE(FK), CodB(FK))</p>
+                          <p><b class="m-l-10 text-danger">TA/D: </b>(CodA(FK), CodD(FK))</p>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 10.</h2></b>
+                        <p>Se deseas la librería la biblioteca de un centro educativo. En la biblioteca existen fichas de autores y libros. Un autor puede escribir varios libros, y un libro puede ser escrito por varios autores. Un libro está por ejemplares que son los que se prestan a los usuarios.
+                        </p>
+                        <p>Así un libro tiene muchos ejemplares y un ejempla pertenece a un libro. De los ejemplares nos interesa saber la localización dentro de la biblioteca. Los ejemplares son prestados a los usuarios, un usuarios puede tomar prestados varios ejemplares y un ejemplar puede ser prestado a varios usuarios. Del préstamo nos interesa saber la fecha de préstamo y de la devolución.</p>
+                      </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e10.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN, 2FN, 3FN </b></p></span></li>
+                        <li class="list-group-item"><span class="m-l-10 text-success"><p>
+                          <p><b class="m-l-10 text-danger">Autor: </b>(DNI, Nombre, Apellidos)</p>
+                          <p><b class="m-l-10 text-danger">Escribe: </b> (DNI Autor (FK), Código Libro (FK))</p>
+                          <p><b class="m-l-10 text-danger">Libros: </b>(Cod. Libro, Titulo, Editorial)</p>
+                          <p><b class="m-l-10 text-danger">Ejemplares: </b> (Nº Ejemplar, Localización, Cod. Libro (FK))</p>
+                          <p><b class="m-l-10 text-danger">Prestado: </b> (Nº Ejemplar (FK), DNI Usuario (FK), Fecha préstamo, Hora préstamo)</p>
+                          <p><b class="m-l-10 text-danger">Usuario: </b>(DNI Usuario, Nombre, Apellidos, dirección)</p>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 11.</h2></b>
+                        <p>Se desea informatizar la gestión de los proyectos del departamento de química de una universidad siguiendo las siguientesespecificaciones:
+                        </p>
+                        <p>
+                          -Al departamento llegan una serie de clientes que quieren realizar proyectos. Generalmente los clientes son empresas que realizancontratos con el grupo de investigación del departamento. Un cliente puede realizar varios proyectos.
+                        </p>
+                        <p>
+                          -Un proyecto es de un cliente. Cada proyecto tiene asignada una cuantiá de dinero que se utilizara para pagar los gastos delproyecto. De esta cuantiá se saca el dinero para realizar los pagos a los colaboradores. También nos interesa saber de los proyectos elnombre, la fecha de comienzo, la de fin, entre otros.
+                        </p><p>
+                          -De cada proyecto se realizan muchos pagos para pagar a los colaboradores.
+                        </p><p>
+                          -De los pagos nos interesa saber el concepto, la cantidad, el IVA aplicado y la fecha del pago.
+                        </p><p>
+                          -Existen varios tipos de pagos (por ejemplo nomina, Representación, Material, etc.). Un pago es de un tipo de pago y a un tipo depago pueden pertenecer muchos pagos.
+                        </p><p>
+                          -Existen una serie de colaboradores que son personas o entidades que van a recibir el dinero de los pagos en concepto de una tarearealizada o la compra de material. Un pago solo puede ser para un colaborador. Este a su vez puede recibir muchos pagos.
+                        </p><p>
+                          -De los colaboradores nos interesa saber: Nombre, NIF, Domicilio, Teléfono, Retención, Banco, Nº Cuenta.
+                        </p>
+                      </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e11.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN, 2FN, 3FN </b></p></span></li>
+                        <li class="list-group-item"><span class="m-l-10 text-success"><p>
+                          <p><b class="m-l-10 text-danger">Cliente: </b>(CIF, Nombre cliente, Teléfono, Domicilio)</p>
+                          <p><b class="m-l-10 text-danger">Proyectos: </b>(Cod. proyecto, Fecha comienzo, Fecha fin, Cuantiá, CIF(FK))</p>
+                          <p><b class="m-l-10 text-danger">Participar : </b>(Cod. proyecto(FK), NIF(FK))</p>
+                          <p><b class="m-l-10 text-danger">Colaboradores: </b>(NIF, Nombre colaborador, Domicilio, Teléfono, Retención, Banco, Nº Cuenta)</p>
+                          <p><b class="m-l-10 text-danger">Pagos: </b>(Cod. pago,, Concepto, Cantidad, IVA aplicado, Fecha del pago, Cod. tipo pago(FK), NIF(FK))</p>
+                          <p><b class="m-l-10 text-danger">TipoPagos: </b>(Cod. tipo pago, Descripción)</p>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- ejercicio 3/.col-->
+        <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><b><h2>Ejemplo 12.</h2> </b>
+                          <p>Tenemos una empresa publica donde los puestos de trabajo, están regulados por el estado, de modo que lascondiciones salariales están determinadas por el puesto de trabajo, se ha creado el siguiente esquema relacional:(con el numero de la seguridad social NSS como clave primaria)</p></li>
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                      <p class="m-l-10 text-success"><b>Empleados</b>(<u>NSS</u>, Nombre, puesto, salario, emails)</p>
+                      <li class="list-group-item"> <img class="img-fluid" src="img/e12.png" alt=""> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary"><p><b>1FN </b></p></li>
+                        <li class="list-group-item"><span class="m-l-10 text-secondary">
+                          <p class="m-l-10 text-success"><b>EMPLEADOS</b>(<u>NSS</u>, Nombre, Puesto, Salario, Email)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><p><b>2FN </b></p></li>
+                        <li class="list-group-item">
+                          <p class="m-l-10 text-success"><b>EMPLEADOS</b>(<u>NSS</u>, Nombre, Puesto, Salario, Email)</p>
+                          <p class="m-l-10 text-danger"><b>EMAILS</b>(<u>NSS(FK)</u>, <u>Email</u>)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="m-l-10 text-secondary "><p><b>3FN </b></p></li>
+                        <li class="list-group-item">
+                          <p class="m-l-10 text-success"><b>EMPLEADOS</b>(<u>NSS</u>, Nombre, Puesto, Salario, Email)</p>
+                          <p class="m-l-10 text-secondary"><b>SALARIO</b>(<u>Puesto</u>, Salario</p>
+                          <p class="m-l-10 text-danger"><b>EMAILS</b>(<u>NSS(FK)</u>, <u>Email</u>)</p>
+                        </li>
+                        <li class="list-group-item"> <img class="img-fluid" src="img/e12_1.png" alt=""> </li>
+                    </ul>
+                </div>
+
+              </div>
+            </div>
+        </div>
+
+
     </div> <!-- .content -->
   </section>
   <section class="" id="propuestos">
@@ -343,6 +700,7 @@ FechaDeNacimiento -> Edad -> Conducir
           <ul class="list-group">
               <li class="list-group-item"><span class="m-l-10 text-secondary "><b>Referencias bibliográficas</b></li>
               <li class="list-group-item"><span class="m-l-10 text-secondary"> <a href="https://es.wikipedia.org/wiki/Normalización_de_bases_de_datos"><u>Wikipedia base de datos</u></a> <br></span>
+              <li class="list-group-item"><span class="m-l-10 text-secondary"> <a href="http://www.wikilearning.com/tutorial/diseno_de_bases_de_datos_en_sql/21129-5"><u>wikilearning</u></a> <br></span>
           </ul>
       </div>
     </div> <!-- .content -->
@@ -362,21 +720,13 @@ FechaDeNacimiento -> Edad -> Conducir
         <!-- Footer Social Icons -->
         <div class="col-lg-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Síguenos</h4>
-          <a class="btn btn-outline-light btn-social mx-1" >
+          <a class="btn btn-outline-light btn-social mx-1" href="https://chat.whatsapp.com/BY4R06wJF1W53CWszmMbyH">
             <i class="fab fa-fw fa-whatsapp"></i>
           </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#">
+          <a class="btn btn-outline-light btn-social mx-1" href="https://t.me/joinchat/IZ6VahTs-pmlCRfIhdQ3sQ">
             <i class="fab fa-fw fa-telegram"></i>
           </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#">
-            <i class="fab fa-fw fa-facebook-f"></i>
-          </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#">
-            <i class="fab fa-fw fa-twitter"></i>
-          </a>
-
         </div>
-
         <!-- Footer About Text -->
         <div class="col-lg-4">
           <h4 class="text-uppercase mb-4">Acerca del desarrollador</h4>
