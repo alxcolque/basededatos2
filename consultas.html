@@ -523,11 +523,11 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 31.</h5></b></span></li>
                   <li class="list-group-item"> <b>Desarrolle una consulta que muestre el código del departamento con título Código del departamento, que cuente los empleados agrupados por departamentos, ordenados por código de departamento;</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> DEPARTMENT_ID "CODIGO DEL DEPARTAMENTO",
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> DEPARTMENT_ID "CODIGO DEL DEPARTAMENTO",
 <span class="token property">COUNT</span>(*) "NUMERO DE EMPLEADOS"
 <span class="token property">FROM</span> EMPLOYEES
 <span class="token property">GROUP BY</span> DEPARTMENT_ID
-<span class="token property">ORDER BY</span> 2;</code></pre>
+<span class="token property">ORDER BY</span> 2;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -536,12 +536,12 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 32.</h5></b></span></li>
                   <li class="list-group-item"> <b>Realice una consulta que muestre el número de países por región, la consulta debe mostrar el código y nombre de la región así como el número de países de cada región, ordenando el resultado por la región que tenga mayor número de países.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> R.REGION_ID,REGION_NAME,
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> R.REGION_ID,REGION_NAME,
 <span class="token property">COUNT</span>(*)
 <span class="token property">FROM</span> REGIONS R, COUNTRIES C
 <span class="token property">WHERE</span> R.REGION_ID=C.REGION_ID
 <span class="token property">GROUP BY</span> R.REGION_ID,REGION_NAME
-<span class="token property">ORDER BY</span> 3 <span class="token property">DESC</span>;</code></pre>
+<span class="token property">ORDER BY</span> 3 <span class="token property">DESC</span>;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -550,12 +550,12 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 33.</h5></b></span></li>
                   <li class="list-group-item"> <b>Desarrolle una consulta que liste los códigos de puestos con el número de empleados que pertenecen a cada puesto, ordenados por número de empleados: los puestos que tienen más empleados aparecen primero.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> J.JOB_ID,
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> J.JOB_ID,
 <span class="token property">COUNT</span>(*) NUMERO
 <span class="token property">FROM</span> EMPLOYEES E,JOBS J
 <span class="token property">WHERE</span> E.JOB_ID=J.JOB_ID
 <span class="token property">GROUP BY</span> J.JOB_ID
-<span class="token property">ORDER BY</span> 2 <span class="token property">DESC</span>;</code></pre>
+<span class="token property">ORDER BY</span> 2 <span class="token property">DESC</span>;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -564,12 +564,12 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 34.</h5></b></span></li>
                   <li class="list-group-item"> <b>Desarrolle una  consulta que  muestre el  número de  empleados por  departamento, ordenados alfabéticamente por nombre de departamento.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> D.DEPARTMENT_ID,DEPARTMENT_NAME,
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> D.DEPARTMENT_ID,DEPARTMENT_NAME,
 <span class="token property">COUNT</span>(*)
 <span class="token property">FROM</span> EMPLOYEES E,DEPARTMENTS D
 <span class="token property">WHERE</span> E.DEPARTMENT_ID=D.DEPARTMENT_ID
 <span class="token property">GROUP BY</span> D.DEPARTMENT_ID,DEPARTMENT_NAME
-<span class="token property">ORDER BY</span> DEPARTMENT_NAME;</code></pre>
+<span class="token property">ORDER BY</span> DEPARTMENT_NAME;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -578,14 +578,14 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 35.</h5></b></span></li>
                   <li class="list-group-item"> <b>Realice una consulta que muestre el número de departamentos por región.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> R.REGION_ID,
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> R.REGION_ID,
 <span class="token property">COUNT</span>(*)
 <span class="token property">FROM</span> DEPARTMENTS D, LOCATIONS L, COUNTRIES C, REGIONS R
 <span class="token property">WHERE</span> D.LOCATION_ID=L.LOCATION_ID
 <span class="token property">AND</span> L.COUNTRY_ID=C.COUNTRY_ID
 <span class="token property">AND</span> C.REGION_ID=R.REGION_ID
 <span class="token property">GROUP BY</span> R.REGION_ID
-<span class="token property">ORDER BY</span> 1 <span class="token property">ASC</span>;</code></pre>
+<span class="token property">ORDER BY</span> 1 <span class="token property">ASC</span>;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -594,12 +594,12 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 36.</h5></b></span></li>
                   <li class="list-group-item"> <b>Realice una consulta que muestre el salario que paga cada departamento (sin incluir comisión), ordenado descendentemente por salario pagado. Se mostrara el código y nombre del departamento y el salario que paga.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> D.DEPARTMENT_ID,DEPARTMENT_NAME,
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> D.DEPARTMENT_ID,DEPARTMENT_NAME,
 <span class="token property">SUM</span>(SALARY)
 <span class="token property">FROM</span> EMPLOYEES E,DEPARTMENTS D
 <span class="token property">WHERE</span> E.DEPARTMENT_ID=D.DEPARTMENT_ID
 <span class="token property">GROUP BY</span> D.DEPARTMENT_ID,DEPARTMENT_NAME
-<span class="token property">ORDER BY</span> 3 <span class="token property">DESC</span>;</code></pre>
+<span class="token property">ORDER BY</span> 3 <span class="token property">DESC</span>;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -608,13 +608,13 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 37.</h5></b></span></li>
                   <li class="list-group-item"> <b>Desarrolle una consulta que muestre el año de contratación, el salario menor, mayor y promedio de todos los empleados por año de contratación. Ordene el resultado por año de contratación: Los más recientes primero.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> EXTRACT(YEAR FROM HIRE_DATE),
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> EXTRACT(YEAR FROM HIRE_DATE),
 <span class="token property">MIN</span>(SALARY),
 <span class="token property">MAX</span>(SALARY),
 <span class="token property">AVG</span>(SALARY)
 <span class="token property">FROM</span> EMPLOYEES
 <span class="token property">GROUP BY EXTRACT</span> (<span class="token property">YEAR FROM</span> HIRE_DATE)
-<span class="token property">ORDER BY</span> 1 <span class="token property">DESC</span>;</code></pre>
+<span class="token property">ORDER BY</span> 1 <span class="token property">DESC</span>;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -623,14 +623,14 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 38.</h5></b></span></li>
                   <li class="list-group-item"> <b>Desarrolle una consulta que muestre el código del departamento con titulo “Código delDepartamento”, El código del trabajo con titulo “Puesto de trabajo” y que cuente losempleados de los departamentos 50 y 80, ordenado el resultado por departamento ypuesto de trabajo.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> D.DEPARTMENT_ID "CODIGO DEL DEPARTAMENTO", J.JOB_ID "PUESTO DE TRABAJO",
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> D.DEPARTMENT_ID "CODIGO DEL DEPARTAMENTO", J.JOB_ID "PUESTO DE TRABAJO",
 <span class="token property">COUNT</span>(*)
 <span class="token property">FROM</span> DEPARTMENTS D, JOBS J, MPLOYEES E
 <span class="token property">WHERE</span> E.DEPARTMENT_ID=D.DEPARTMENT_ID
 <span class="token property">AND</span> E.JOB_ID=J.JOB_ID
 <span class="token property">AND</span> D.DEPARTMENT_ID IN (50,80)
 <span class="token property">GROUP BY</span> D.DEPARTMENT_ID,J.JOB_ID
-<span class="token property">ORDER BY</span> D.DEPARTMENT_ID DESC ,J.JOB_ID <span class="token property">DESC</span>;</code></pre>
+<span class="token property">ORDER BY</span> D.DEPARTMENT_ID DESC ,J.JOB_ID <span class="token property">DESC</span>;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -639,7 +639,7 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 39.</h5></b></span></li>
                   <li class="list-group-item"> <b>Realice una consulta que muestre los empleados que son gerentes (manager_id) y el número de empleados subordinados a cada uno, ordenados descendentemente por número de subordinado. Excluya a los gerentes que tienen 5 empleados subordinados o menos.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> E1.EMPLOYEE_ID,E1.FIRST_NAME||''||E1.LAST_NAME,
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> E1.EMPLOYEE_ID,E1.FIRST_NAME||''||E1.LAST_NAME,
 <span class="token property">COUNT</span>(*)
 <span class="token property">FROM</span> EMPLOYEES E1, EMPLOYEES E2
 <span class="token property">WHERE</span> E2.MANAGER_ID=E1.EMPLOYEE_ID
@@ -650,7 +650,7 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
 <span class="token property">FROM</span> EMPLOYEES E3, EMPLOYEES E4
 <span class="token property">WHERE</span> E3.MANAGER_ID=E4.EMPLOYEE_ID
 <span class="token property">AND</span> E3.MANAGER_ID=E1.EMPLOYEE_ID)>5
-<span class="token property">ORDER BY</span> E1.EMPLOYEE_ID,E1.FIRST_NAME||' '||E1.LAST_NAME;</code></pre>
+<span class="token property">ORDER BY</span> E1.EMPLOYEE_ID,E1.FIRST_NAME||' '||E1.LAST_NAME;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -668,10 +668,10 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 40.</h5></b></span></li>
                   <li class="list-group-item"> <b>Realice una consulta que muestre solo los nombres de los empleados que se repiten.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> FIRST_NAME
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> FIRST_NAME
 <span class="token property">FROM</span> EMPLOYEES
 <span class="token property">GROUP BY</span> FIRST_NAME
-<span class="token property">HAVING COUNT</span> (*)>1;</code></pre>
+<span class="token property">HAVING COUNT</span> (*)>1;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -680,10 +680,10 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 41.</h5></b></span></li>
                   <li class="list-group-item"> <b>Desarrolle una consulta que muestre solo los nombres de los empleados que no se repiten.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> FIRST_NAME
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> FIRST_NAME
 <span class="token property">FROM</span> EMPLOYEES
 <span class="token property">GROUP BY</span> FIRST_NAME
-<span class="token property">HAVING COUNT</span> (*)=1;</code></pre>
+<span class="token property">HAVING COUNT</span> (*)=1;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -692,11 +692,11 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 42.</h5></b></span></li>
                   <li class="list-group-item"> <b>Desarrolle una consulta que liste el código del departamento con título “Código del departamento”, el código de trabajo con título “Puesto de Trabajo” y que cuente los empleados por departamentos y puesto de trabajo, en donde el puesto de trabajo tenga solamente un empleado en la empresa.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> DEPARTMENT_ID "CODIGO DEL DEPARTAMENTO", JOB_ID "PUESTO DE TRABAJO",
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> DEPARTMENT_ID "CODIGO DEL DEPARTAMENTO", JOB_ID "PUESTO DE TRABAJO",
 <span class="token property">COUNT</span>(*)
 <span class="token property">FROM</span> EMPLOYEES
 <span class="token property">GROUP BY</span> DEPARTMENT_ID,JOB_ID
-<span class="token property">HAVING COUNT</span> (*)=1;</code></pre>
+<span class="token property">HAVING COUNT</span> (*)=1;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -705,13 +705,13 @@ C.COUNTRY_NAME,D.STATE_PROVINCE, E.DEPARTMENT_ID,E.DEPARTMENT_NAME
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 43.</h5></b></span></li>
                   <li class="list-group-item"> <b>Realice una consulta que liste el número de empleados por ciudad, que ganan como mínimo 5000 en concepto de salario. Omita las ciudades que tengan menos de 3 empleados con ese salario.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> CITY,<span class="token property">COUNT</span>(*)
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> CITY,<span class="token property">COUNT</span>(*)
 <span class="token property">FROM</span> EMPLOYEES E,DEPARTMENTS D,LOCATIONS L
 E.DEPARTMENT_ID=D.DEPARTMENT_ID
 <span class="token property">AND</span> D.LOCATION_ID=L.LOCATION_ID
 <span class="token property">AND</span> SALARY >=5000
 <span class="token property">GROUP BY</span> CITY
-<span class="token property">HAVING COUNT</span> (*)>3;</code></pre>
+<span class="token property">HAVING COUNT</span> (*)>3;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
@@ -720,10 +720,10 @@ E.DEPARTMENT_ID=D.DEPARTMENT_ID
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 44.</h5></b></span></li>
                   <li class="list-group-item"> <b>44.	Elabore una consulta que muestre el código del departamento con titulo “Código deldepartamento”, que cuente los empleados por departamento de aquellos departamentos que tengan mas de 10 empleados.</b>
-                    <pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> DEPARTMENT_ID "CODIGO DEL DEPARTAMENTO",<span class="token property">COUNT</span>(*)
+                    <small><pre class="language-sql"><code class="language-sql"><span class="token property">SELECT</span> DEPARTMENT_ID "CODIGO DEL DEPARTAMENTO",<span class="token property">COUNT</span>(*)
 <span class="token property">FROM</span> EMPLOYEES
 <span class="token property">GROUP BY</span> DEPARTMENT_ID
-<span class="token property">HAVING COUNT</span> (*)>10;</code></pre>
+<span class="token property">HAVING COUNT</span> (*)>10;</code></pre></small>
                   </li>
                   <!--<li class="list-group-item"> <img class="img-fluid" src="img/e1.png" alt=""> </li>-->
               </ul>
