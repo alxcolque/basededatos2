@@ -1,0 +1,17 @@
+<pre class="language-sql"><code class=" language-sql">
+<span class="token comment">// Obtener el usuario con id 7</span>
+<span class="token variable">$user</span> <span class="token operator">=</span> <span class="token scope">User<span class="token punctuation">::</span></span><span class="token function">find</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Obtener el e-mail del usuario con id 7</span>
+<span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">email</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Actualizar el nombre del usuario con id 7</span>
+<span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">name</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'Juan'</span><span class="token punctuation">;</span>
+<span class="token variable">$user</span><span class="token operator">-</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Eliminar el usuario con id 7 (usando eliminación lógica si se desea)</span>
+<span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Obtener las publicaciones (posts) del usuario seleccionado</span>
+<span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">posts</span><span class="token punctuation">;</span>
+</code></pre>
