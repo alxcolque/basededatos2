@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Base de datos II</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/prism.min.css">
+
+  <!-- Theme CSS -->
+  <link href="css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+      <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="./"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#teoria">Introduccion</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#ejemplos">Ejemplos</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#propuestos">Propuestos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- Masthead -->
+<header class="masthead bg-success text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+      <!-- Masthead Avatar Image -->
+
+      <!-- Masthead Heading -->
+      <h4 class="text-uppercase">Bloques anónimos de ORACLE</h4>
+      <p class="masthead-subheading font-weight-light mb-0">Por: Colq-x</p>
+    </div>
+  </header>
+  <section class="" id="teoria">
+    <div class="container-fluid">
+        <br>
+        <div class="col-sm-12">
+            <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                <span class="badge badge-pill badge-success">HI</span> Bienvenido al sitio.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <!--/.col-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <b>Tipos de datos las más usadas</b>
+            </div>
+            <div class="card-body">
+              <img class="img-fluid" src="img/an1.png" alt="">
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <b>Estructura básica</b>
+            </div>
+            <div class="card-body">
+              <img class="img-fluid" src="img/anEstruct.png" alt="">
+              <p>Explicaré cada línea del código con detalle;</p>
+              <div class="">
+                <p><b>DECLARE:</b> En esta parte se hace la declaración de variables que usaremos dentro del BEGIN, en caso de que no haya variables que declarar, no es necesario ponerlo.</p>
+                <p><b>BEGIN:</b> En esta zona lo puedes escribir la lógica de la programación </p>
+                <p> <b>EXCEPTION:</b> Aquí se controla las excepciones en caso de que se genere, es totalmente opcional pero recomendada el uso.</p>
+                <p> <b>END:</b> Indica el fin del bloque anónimo</p>
+              </div>
+            </div>
+        </div>
+
+    </div> <!-- .content -->
+  </section>
+  <section class="" id="ejemplos">
+    <div class="container-fluid">
+        <!--/.col-->
+        <div class="card mb-3">
+          <!-- Portfolio Section Heading -->
+          <h4 class="page-section-heading text-center text-uppercase text-secondary mb-0">Ejemplos</h4>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 1. DBMS_OUTPUT.PUT_LINE</h5></b></span></li>
+                  <li class="list-group-item"> <b>DBMS_OUTPUT.PUT_LINE es un procedimiento para mostrar texto en pantalla</b>
+                    <small><pre class="language-sql"><code class="language-sql">BEGIN
+DBMS_OUTPUT.PUT_LINE('Hola mundo !');
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 2. Variable de tipo VARCHAR2</h5></b></span></li>
+                  <li class="list-group-item"> <b>El siguiente bloque declara una variable de tipo VARCHAR2(una cadena), luego usamos DBMS_OUTPUT.PUT_LINE para desplegarlo </b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+mensaje VARCHAR2(100):= 'Hola Mundo!';
+BEGIN
+DBMS_OUTPUT.PUT_LINE(mensaje);
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 3. EXCEPTION</h5></b></span></li>
+                  <li class="list-group-item"> <b>El siguiente ejemplo de bloque agrega una sección de manejo de excepciones, donde tenemos a  (WHEN OTHERS), luego es capturado la excepción y retonado por una función (SQLERRM) </b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+mensaje VARCHAR2(100):= 'Hola Mundo!';
+BEGIN
+DBMS_OUTPUT.PUT_LINE(mensaje);
+EXCEPTION
+WHEN OTHERS
+THEN
+DBMS_OUTPUT.PUT_LINE(SQLERRM);
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 4. TO_CHAR</h5></b></span></li>
+                  <li class="list-group-item"> <b>Fecha actual (SYSDATE) con bloque anónimo y concatenando(||) con un mensaje </b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+A VARCHAR2(10):='';
+BEGIN
+SELECT TO_CHAR(SYSDATE) INTO A FROM DUAL;
+DBMS_OUTPUT.PUT_LINE('LA FECHA ACTUAL ES '||A);
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 5. TO_CHAR</h5></b></span></li>
+                  <li class="list-group-item"> <b>Extraer de Fecha actual (SYSDATE), hora, minuto y segundo.</b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+HORA NUMBER;
+MINUTO NUMBER;
+SEGUNDO NUMBER;
+BEGIN
+SELECT TO_CHAR (SYSDATE,'HH24')HOUR INTO HORA FROM DUAL;
+SELECT TO_CHAR (SYSDATE,'MI')MINUTE INTO MINUTO FROM DUAL;
+SELECT TO_CHAR (SYSDATE,'SS')SECOND INTO SEGUNDO FROM DUAL;
+DBMS_OUTPUT.PUT_LINE(HORA);
+DBMS_OUTPUT.PUT_LINE(MINUTO);
+DBMS_OUTPUT.PUT_LINE(SEGUNDO);
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 6. EXTRACT</h5></b></span></li>
+                  <li class="list-group-item"> <b>Extraer Año, mes y día con la funcion(EXTRACT).</b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+AAAA NUMBER;--AÑO
+MES NUMBER;
+DIA NUMBER;
+BEGIN
+SELECT EXTRACT(YEAR FROM SYSDATE) INTO AAAA FROM DUAL;
+SELECT EXTRACT(MONTH FROM SYSDATE)INTO MES FROM DUAL;
+SELECT EXTRACT(DAY FROM SYSDATE)INTO DIA FROM DUAL;
+DBMS_OUTPUT.PUT_LINE(AAAA);
+DBMS_OUTPUT.PUT_LINE(MES);
+DBMS_OUTPUT.PUT_LINE(DIA);
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+        </div>
+    </div> <!-- .content -->
+
+
+  </section>
+  <section class="" id="propuestos">
+    <div class="container-fluid">
+      <div class="card-body">
+          <ul class="list-group">
+              <li class="list-group-item"><span class="m-l-10 text-secondary "><b>Ejercicios propuestos</b></li>
+              <!--<li class="list-group-item"><span class="m-l-10 text-secondary"> <a href="https://es.wikipedia.org/wiki/Normalización_de_bases_de_datos"><u>Wikipedia base de datos</u></a> <br></span>-->
+          </ul>
+      </div>
+    </div> <!-- .content -->
+  </section>
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Ciudad</h4>
+          <p class="lead mb-0">Oruro
+            <br>Carrera Sistemas informática, Centro</p>
+        </div>
+
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Síguenos</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://chat.whatsapp.com/BY4R06wJF1W53CWszmMbyH">
+            <i class="fab fa-fw fa-whatsapp"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://t.me/joinchat/IZ6VahTs-pmlCRfIhdQ3sQ">
+            <i class="fab fa-fw fa-telegram"></i>
+          </a>
+        </div>
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Acerca del desarrollador</h4>
+          <p class="lead mb-0">Desarrollado por COL
+            <!--<a href="http://startbootstrap.com">Start Bootstrap</a>.</p>-->
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; Website 2020</small>
+    </div>
+  </section>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>
+</body>
+
+</html>
