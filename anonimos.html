@@ -196,6 +196,169 @@ END;</code></pre></small>
                   </li>
               </ul>
           </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 7. A partir de este ejemplo se hará el uso del esquema HR de oracle 10g.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Realizar un bloque anónimo que intercambie los salarios de los empleados con ID 120 y 122.</b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+sal_120 EMPLOYEES.SALARY%TYPE;
+BEGIN
+SELECT SALARY INTO SAL_120
+FROM EMPLOYEES
+WHERE EMPLOYEE_ID=120;
+UPDATE EMPLOYEES SET SALARY = (SELECT SALARY FROM EMPLOYEES WHERE EMPLOYEE_ID = 122)
+WHERE EMPLOYEE_ID = 120;
+UPDATE EMPLOYEES SET SALARY = sal_120
+WHERE EMPLOYEE_ID=122;
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 8.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Realizar un programa que cambie el salario del empleado con id 120 con el salario promedio de todos los empleados.</b>
+                    <small><pre class="language-sql">DECLARE
+PROM EMPLOYEES.SALARY%TYPE;
+BEGIN
+SELECT AVG(SALARY) INTO PROM FROM EMPLOYEES;
+UPDATE EMPLOYEES SET SALARY = PROM WHERE EMPLOYEE_ID = 120;
+END;<code class="language-sql"></code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 9.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Asignar el salario máximo al último de los empleados de la lista, y el salario del último empleado asignar al primero.</b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+SAL_ULT EMPLOYEES.SALARY%TYPE;
+BEGIN
+SELECT SALARY INTO SAL_ULT
+FROM EMPLOYEES
+WHERE EMPLOYEE_ID = (SELECT MAX(EMPLOYEE_ID) FROM EMPLOYEES);
+UPDATE EMPLOYEES SET SALARY = 8300
+WHERE EMPLOYEE_ID = (SELECT MAX(EMPLOYEE_ID) FROM EMPLOYEES);
+UPDATE EMPLOYEES SET SALARY = 24000
+WHERE EMPLOYEE_ID = (SELECT MIN(EMPLOYEE_ID) FROM EMPLOYEES);
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 10.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Realizar un bloque anónimo que muestre la diferencia en años de dos empleados con código 112 y 115.</b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+F1 NUMBER;
+F2 NUMBER;
+BEGIN
+SELECT EXTRACT(YEAR FROM HIRE_DATE) INTO F1
+FROM EMPLOYEES WHERE EMPLOYEE_ID = 115;
+SELECT EXTRACT(YEAR FROM HIRE_DATE) INTO F2
+FROM EMPLOYEES WHERE EMPLOYEE_ID = 110;
+DBMS_OUTPUT.PUT_LINE('LA DIFERENCIA ES DE '||ABS(F1-F2)||' AÑOS');
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 11.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Implementar el salario del empleado 115 basando en las siguientes condiciones si la experiencia es de más de 10 años aumentar el 20%, si la experiencia es mayor a 5 años aumentar el 10% en otro caso el 5%.</b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+EXP NUMBER(2);
+AUM NUMBER(5,2);
+BEGIN
+SELECT (ROUND(SYSDATE-HIRE_DATE)/365) INTO EXP FROM EMPLOYEES WHERE EMPLOYEE_ID=115;
+CASE
+WHEN EXP > 10 THEN AUM := 1.2;
+WHEN EXP > 5 THEN AUM := 1.1;
+WHEN EXP <= 5 THEN AUM := 1.05;
+END CASE;
+UPDATE EMPLOYEES SET SALARY = SALARY*AUM WHERE EMPLOYEE_ID = 115;
+END;
+</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 12.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Cambiar el porcentaje de comisión para el empleado 150. Bajo las siguientes condiciones: si el salario es mayor que 10 000 cambiar a 40%, si el salario es menor que 10 000 pero la experiencia mayor a 10 años, entonces cambiar a 35% si el salario < 3000 then a 25%, en otro caso a 15%.</b>
+                    <small><pre class="language-sql"><code class="language-sql"></code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo .</h5></b></span></li>
+                  <li class="list-group-item"> <b></b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+EXP NUMBER(2);
+AUM NUMBER(5,2);
+SAL EMPLOYEES.SALARY%TYPE;
+BEGIN
+SELECT ROUND(SYSDATE-HIRE_DATE)/365 INTO EXP
+FROM EMPLOYEES WHERE EMPLOYEE_ID = 150;
+SELECT SALARY INTO SAL FROM EMPLOYEES WHERE EMPLOYEE_ID = 150;
+CASE
+WHEN SAL < 10000 AND EXP > 10 AND SAL > 3000 THEN
+AUM := 1.35;
+WHEN SAL >= 10000 THEN
+AUM := 1.4;
+WHEN SAL <= 3000 THEN
+AUM := 1.25;
+ELSE
+AUM := 1.15;
+END CASE;
+UPDATE EMPLOYEES SET SALARY= SALARY*AUM WHERE EMPLOYEE_ID = 150;
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 13.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Encontrar el nombre del empleado y el departamento para el manager que está a cargo del empleado con id 103.</b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+V_EMP VARCHAR2(30);
+V_ID NUMBER;
+V_DEP VARCHAR2(30);
+BEGIN
+SELECT MANAGER_ID INTO V_ID FROM EMPLOYEES WHERE EMPLOYEE_ID = 103;
+SELECT FIRST_NAME INTO V_EMP FROM EMPLOYEES WHERE EMPLOYEE_ID = V_ID;
+SELECT DEPARTMENT_NAME INTO V_DEP FROM DEPARTMENTS
+WHERE DEPARTMENT_ID = (SELECT DEPARTMENT_ID FROM EMPLOYEES WHERE EMPLOYEE_ID = V_ID);
+DBMS_OUTPUT.PUT_LINE(V_EMP||' '||V_DEP);
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 14.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Cambiar el salario del empleado 130 por el departamento 130 por el empleado Joe si no existe Joe cambiar por el promedio de todas los empleados. Si existen más de un empleado con el nombre Joe muestre el cambio con el menor salario con los empleados con ese nombre.</b>
+                    <small><pre class="language-sql"><code class="language-sql">DECLARE
+CONT NUMBER;
+PROM NUMBER;
+SAL EMPLOYEES.SALARY%TYPE;
+BEGIN
+SELECT COUNT(*) INTO CONT
+FROM EMPLOYEES WHERE FIRST_NAME = 'Joe';
+SELECT AVG(SALARY) INTO PROM FROM EMPLOYEES;
+IF CONT = 0 THEN
+UPDATE EMPLOYEES SET SALARY = PROM WHERE EMPLOYEE_ID = 130;
+ELSIF CONT = 1 THEN
+UPDATE EMPLOYEES SET SALARY = (SELECT SALARY FROM EMPLOYEES WHERE FIRST_NAME = 'Joe') WHERE EMPLOYEE_ID = 130;
+ELSE
+UPDATE EMPLOYEES SET SALARY = (SELECT MIN(SALARY) FROM EMPLOYEES WHERE FIRST_NAME = 'Joe') WHERE EMPLOYEE_ID = 130;
+END IF;
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+
         </div>
     </div> <!-- .content -->
 

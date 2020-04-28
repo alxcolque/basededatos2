@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Base de datos II</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/prism.min.css">
+
+  <!-- Theme CSS -->
+  <link href="css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+      <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="./"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#teoria">Introduccion</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#ejemplos">Ejemplos</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#propuestos">Propuestos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- Masthead -->
+<header class="masthead bg-success text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+      <!-- Masthead Avatar Image -->
+
+      <!-- Masthead Heading -->
+      <h4 class="text-uppercase">Funciones ORACLE</h4>
+      <p class="masthead-subheading font-weight-light mb-0">Por: Colque</p>
+      <a href="https://youtu.be/dvENsi-vZok">
+        <div class="card-body center">
+          <img class="img-fluid" src="img/ingYT.png" alt="">
+        </div>
+        <i>Explicación en video</i>
+      </a>
+
+    </div>
+  </header>
+  <section class="" id="teoria">
+    <div class="container-fluid">
+        <br>
+        <div class="col-sm-12">
+            <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                <span class="badge badge-pill badge-success">HI</span> Bienvenido al sitio de funciones.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <!--/.col-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <b>Sintaxis</b>
+            </div>
+            <div class="card-body">
+              <img class="img-fluid" src="img/fuEstruct.png" alt="">
+              <div class="">
+                <p><b>Una función al igual que los stored procedures, su código se guarda en la base de datos y tiene como función realizar un cálculo y devolver un valor.</b></p>
+              </div>
+            </div>
+        </div>
+
+    </div> <!-- .content -->
+  </section>
+  <section class="" id="ejemplos">
+    <div class="container-fluid">
+        <!--/.col-->
+        <div class="card mb-3">
+          <!-- Portfolio Section Heading -->
+          <h4 class="page-section-heading text-center text-uppercase text-secondary mb-0">Ejemplos</h4>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 1.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Contar todos los empleados del esquema HR</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE FUNCTION GET_TOTAL_EMPLEADOS
+RETURN NUMBER
+IS
+E_TOTAL NUMBER:=0;
+BEGIN
+SELECT COUNT(*) INTO E_TOTAL FROM EMPLOYEES;
+RETURN E_TOTAL;
+END;
+
+-- Probando la función:
+
+SELECT GET_TOTAL_EMPLEADOS FROM DUAL;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+
+        </div>
+    </div> <!-- .content -->
+
+  </section>
+  <section class="" id="propuestos">
+    <div class="container-fluid">
+      <div class="card-body">
+          <ul class="list-group">
+              <li class="list-group-item"><span class="m-l-10 text-secondary "><b>Ejercicios propuestos</b></li>
+              <!--<li class="list-group-item"><span class="m-l-10 text-secondary"> <a href="https://es.wikipedia.org/wiki/Normalización_de_bases_de_datos"><u>Wikipedia base de datos</u></a> <br></span>-->
+          </ul>
+      </div>
+    </div> <!-- .content -->
+  </section>
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Ciudad</h4>
+          <p class="lead mb-0">Oruro
+            <br>Carrera Sistemas informática, Centro</p>
+        </div>
+
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Síguenos</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://chat.whatsapp.com/BY4R06wJF1W53CWszmMbyH">
+            <i class="fab fa-fw fa-whatsapp"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://t.me/joinchat/IZ6VahTs-pmlCRfIhdQ3sQ">
+            <i class="fab fa-fw fa-telegram"></i>
+          </a>
+        </div>
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Acerca del desarrollador</h4>
+          <p class="lead mb-0">Desarrollado por COL
+            <!--<a href="http://startbootstrap.com">Start Bootstrap</a>.</p>-->
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; Website 2020</small>
+    </div>
+  </section>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>
+</body>
+
+</html>
