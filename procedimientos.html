@@ -163,6 +163,155 @@ END;</code></pre></small>
               </ul>
           </div>
 
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 4. Uso de CURSORES.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Desarrollar un procedimiento que visualice el apellido y la fecha de alta de todos los empleados ordenados por apellidos.</b>
+                    <small><pre class="language-sql"><code class="language-sql">create or replace PROCEDURE VER_EMP
+AS
+CURSOR C_EMPLE IS
+SELECT LAST_NAME, HIRE_DATE FROM EMPLOYEES ORDER BY 1;
+V_APELLIDO VARCHAR2(20);
+V_FECHA DATE;
+BEGIN OPEN
+C_EMPLE;
+FETCH C_EMPLE INTO V_APELLIDO, V_FECHA;
+WHILE C_EMPLE%FOUND LOOP
+DBMS_OUTPUT.PUT_LINE(V_APELLIDO||' '||V_FECHA);
+FETCH C_EMPLE INTO V_APELLIDO, V_FECHA;
+END LOOP;
+CLOSE C_EMPLE;
+END VER_EMP;
+
+BEGIN
+VER_EMP;
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 5.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Codificar un procedimiento que muestre el nombre de cada departamento y el número de empleados que tiene.</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE PROCEDURE VER_NOM_DEP
+AS
+CURSOR C_EMPL IS
+SELECT FIRST_NAME, COUNT(EMPLOYEE_ID) FROM EMPLOYEES E, DEPARTMENTS D
+WHERE D.DEPARTMENT_ID = E.DEPARTMENT_ID
+GROUP BY FIRST_NAME;
+V_DNOMBRE DEPARTMENTS.DEPARTMENT_NAME%TYPE;
+V_NUM_EMP BINARY_INTEGER;
+BEGIN
+OPEN C_EMPL;
+FETCH C_EMPL INTO V_DNOMBRE, V_NUM_EMP;
+WHILE C_EMPL%FOUND LOOP
+DBMS_OUTPUT.PUT_LINE(V_DNOMBRE||' '||V_NUM_EMP);
+FETCH C_EMPL INTO V_DNOMBRE, V_NUM_EMP;
+END LOOP;
+CLOSE C_EMPL;
+END VER_NOM_DEP;
+
+BEGIN
+VER_NOM_DEP;
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 6.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Escribir un procedimiento que reciba una cadena y visualice el apellido y el ID de empleado de todos los empleados cuyo apellido contenga la cadena especificada. Al finalizar el número de empleados  mostrados.</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE PROCEDURE BUSCAR_CAD(CADENA VARCHAR2)
+AS
+CAD VARCHAR2(20);
+CURSOR C_EMPLE IS
+SELECT LAST_NAME, EMPLOYEE_ID FROM EMPLOYEES WHERE LAST_NAME LIKE CAD;
+V_EMP C_EMPLE%ROWTYPE;
+BEGIN
+CAD:='%'||CADENA||'%';
+OPEN C_EMPLE;
+FETCH C_EMPLE INTO V_EMP;
+WHILE C_EMPLE%FOUND LOOP
+DBMS_OUTPUT.PUT_LINE(V_EMP.EMPLOYEE_ID||' '||V_EMP.LAST_NAME);
+FETCH C_EMPLE INTO V_EMP;
+END LOOP;
+DBMS_OUTPUT.PUT_LINE('NUMERO DE EMPLEADOS: '||C_EMPLE%ROWCOUNT);
+CLOSE C_EMPLE;
+END BUSCAR_CAD;
+
+BEGIN
+BUSCAR_CAD('Mi');
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 7.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Escribir un programa que visualice el nombre y el salario de los 5 empleados que tienen el salario más alto.</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE PROCEDURE EMP_5_MAX
+AS
+CURSOR C_EMP IS
+SELECT FIRST_NAME, SALARY FROM EMPLOYEES ORDER BY SALARY DESC;
+VR_EMP C_EMP%ROWTYPE;
+CONT NUMBER;
+BEGIN
+CONT:=1;
+OPEN C_EMP;
+FETCH C_EMP INTO VR_EMP;
+WHILE C_EMP%FOUND AND CONT <=5 LOOP
+DBMS_OUTPUT.PUT_LINE(VR_EMP.FIRST_NAME||' '||VR_EMP.SALARY);
+FETCH C_EMP INTO VR_EMP;
+CONT:=CONT+1;
+END LOOP;
+CLOSE C_EMP;
+END EMP_5_MAX;
+END;
+
+BEGIN
+EMP_5_MAX;
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 8. con OPEN FETCH.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Codificar un programa que visualice los dos empleados que ganan menos de cada oficio.</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE PROCEDURE EMP2_MIN_SAL_OFICIO
+AS
+CURSOR C_EMP IS
+SELECT FIRST_NAME, JOB_TITLE, SALARY FROM EMPLOYEES E, JOBS J
+WHERE J.JOB_ID = E.JOB_ID ORDER BY JOB_TITLE, SALARY;
+V_EMP C_EMP%ROWTYPE;
+OFICIO JOBS.JOB_TITLE%TYPE;
+CONT NUMBER;
+BEGIN
+OPEN C_EMP;
+OFICIO := '_';
+FETCH C_EMP INTO V_EMP;
+WHILE C_EMP%FOUND LOOP
+IF OFICIO <> V_EMP.JOB_TITLE THEN
+OFICIO := V_EMP.JOB_TITLE;
+CONT := 1;
+END IF;
+IF CONT <= 2 THEN
+DBMS_OUTPUT.PUT_LINE(V_EMP.JOB_TITLE||' '||V_EMP.FIRST_NAME||' '||V_EMP.SALARY);
+END IF;
+FETCH C_EMP INTO V_EMP;
+CONT := CONT + 1;
+END LOOP;
+CLOSE C_EMP;
+END EMP2_MIN_SAL_OFICIO;
+
+BEGIN
+EMP2_MIN_SAL_OFICIO;
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+
         </div>
     </div> <!-- .content -->
 
