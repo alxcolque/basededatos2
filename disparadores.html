@@ -1,3 +1,9 @@
+{AFTER/BEFORE} suceso_disparo ON referencia tabla
+{ FOR EACH ROW [WHEN CONDICION]}
+BEGIN
+--Cuerpo del disparador
+END;
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,16 +85,17 @@
             <div class="card-header">
                 <b>Estructura básica</b>
             </div>
-            <!--<div class="card-body">
-              <img class="img-fluid" src="img/anEstruct.png" alt="">
-              <p>Explicaré cada línea del código con detalle;</p>
+            <div class="card-body">
+              <p>Un disparador es un objeto relacionado a una tabla el cual desencadena una acción determinada (implícito) cuando se realiza operaciones DML en la taba: INSERT, UPDATE y DELETE.</p>
+              <img class="img-fluid" src="img/diEstruct.png" alt="">
+              <!--<p>Explicaré cada línea del código con detalle;</p>
               <div class="">
                 <p><b>DECLARE:</b> En esta parte se hace la declaración de variables que usaremos dentro del BEGIN, en caso de que no haya variables que declarar, no es necesario ponerlo.</p>
                 <p><b>BEGIN:</b> En esta zona lo puedes escribir la lógica de la programación </p>
                 <p> <b>EXCEPTION:</b> Aquí se controla las excepciones en caso de que se genere, es totalmente opcional pero recomendada el uso.</p>
-                <p> <b>END:</b> Indica el fin del bloque anónimo</p>
-              </div>
-            </div>-->
+                <p> <b>END:</b> Indica el fin del bloque anónimo</p>-->
+            </div>
+          </div>
         </div>
 
     </div> <!-- .content -->
@@ -102,8 +109,34 @@
           <div class="card-body">
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 1.</h5></b></span></li>
-                  <li class="list-group-item"> <b></b>
-                    <small><pre class="language-sql"><code class="language-sql"></code></pre></small>
+                  <li class="list-group-item"> <b>Asegurar que no se puedan hacer cambios en la tabla de empleados antes de las 6am y después de las 10pm</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE TRIGGER trg_employees_time_check
+BEFORE UPDATE OR INSERT OR DELETE
+ON employees
+FOR EACH ROW
+BEGIN
+IF TO_CHAR(SYSDATE, 'hh24') < 6 OR TO_CHAR(SYSDATE, 'hh24') > 22 THEN
+raise_application_error(-20111, 'No se permiten modificaciones');
+END IF;
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 2.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Crear un trigger para asegurar que el salario de un empleado no disminuya.</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE TRIGGER trg_employees_salary_check
+BEFORE UPDATE
+ON employees
+FOR EACH ROW
+BEGIN
+IF :old.salary > :new.salary THEN
+raise_application_error(-20111, 'No es posible cambiar el salario a
+una cantidad menor');
+END IF;
+END;</code></pre></small>
                   </li>
               </ul>
           </div>
@@ -117,7 +150,7 @@
       <div class="card-body">
           <ul class="list-group">
               <li class="list-group-item"><span class="m-l-10 text-secondary "><b>Ejercicios propuestos</b></li>
-              <!--<li class="list-group-item"><span class="m-l-10 text-secondary"> <a href="https://es.wikipedia.org/wiki/Normalización_de_bases_de_datos"><u>Wikipedia base de datos</u></a> <br></span>-->
+              <li class="list-group-item"><span class="m-l-10 text-secondary"> <p>Cada que se cambie un puesto para un empleado, escribir los siguientes detalles en la tabla job_history. Id del empleado, antiguo job_id, fecha de contratación para la nueva fecha de inicio, y sysdate para la fecha de fin. Si la fila ya existe, entonces la fecha de inicio debe ser la fecha de fin de esa fila + 1</p> </span></li>
           </ul>
       </div>
     </div> <!-- .content -->

@@ -54,9 +54,9 @@
       <!-- Masthead Heading -->
       <h4 class="text-uppercase">Funciones ORACLE</h4>
       <p class="masthead-subheading font-weight-light mb-0">Por: Colque</p>
-      <a href="https://youtu.be/dvENsi-vZok">
+      <a href="https://youtu.be/d9GXsSEkmhk">
         <div class="card-body center">
-          <img class="img-fluid" src="img/ingYT.png" alt="">
+          <img class="img-fluid" src="img/yout.png" alt="">
         </div>
         <i>Explicación en video</i>
       </a>
@@ -98,6 +98,23 @@
           <div class="card-body">
               <ul class="list-group">
                   <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 1.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Crear una función que sume dos números.</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE FUNCTION SUMAR_AYB(a number, b number)
+return number
+IS
+C number;
+BEGIN
+C:=A + B;
+return C;
+END;
+
+SELECT SUMAR_AYB(3,44)FROM DUAL;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 2.</h5></b></span></li>
                   <li class="list-group-item"> <b>Contar todos los empleados del esquema HR</b>
                     <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE FUNCTION GET_TOTAL_EMPLEADOS
 RETURN NUMBER
@@ -115,6 +132,97 @@ SELECT GET_TOTAL_EMPLEADOS FROM DUAL;</code></pre></small>
               </ul>
           </div>
 
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 3.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Realizar un programa para sumar el salario mínimo y el salario máximo de los empleados de HR.</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE FUNCTION SUMA_SALARIO
+RETURN NUMBER
+IS
+SAL_TOT NUMBER;
+MIN_SAL NUMBER;
+MAX_SAL NUMBER;
+BEGIN
+SELECT MIN(SALARY)INTO MIN_SAL FROM EMPLOYEES;
+SELECT MAX(SALARY)INTO MAX_SAL FROM EMPLOYEES;
+SAL_TOT := MIN_SAL + MAX_SAL;
+RETURN SAL_TOT;
+END;
+
+SELECT SUMA_SALARIO FROM DUAL;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 4.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Crear una función como parámetro una fecha, y que devuelva solo el año</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE FUNCTION DEVOLVER_FECHA(FECHA DATE)
+RETURN NUMBER
+AS
+V_YEAR NUMBER(4);
+BEGIN
+V_YEAR := EXTRACT(YEAR FROM FECHA);
+--V_YEAR := TO_NUMBER(TO_CHAR(FECHA,'YYYY'));
+RETURN V_YEAR;
+END;
+
+SELECT DEVOLVER_FECHA(SYSDATE) FROM DUAL;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 5.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Crear una función que reciba el ID de un empleado y que regrese el número de puestos que ha tenido dicho empleado.</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE FUNCTION N_PUESTOS(empid NUMBER)
+RETURN NUMBER IS
+v_cont NUMBER(2);
+BEGIN
+SELECT COUNT(*) INTO v_cont
+FROM job_history
+WHERE employee_id = empid;
+RETURN v_cont;
+END;
+
+BEGIN
+DBMS_OUTPUT.PUT_LINE(N_PUESTOS(101));
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="card-body">
+              <ul class="list-group">
+                  <li class="list-group-item"><span class="m-l-3 text-secondary "><b><h5>Ejemplo 6.</h5></b></span></li>
+                  <li class="list-group-item"> <b>Crear una función que reciba el manager id y regrese el nombre de los empleados a cargo de dicho manager, los nombres deben ser retornados como una cadena separada por comas.</b>
+                    <small><pre class="language-sql"><code class="language-sql">CREATE OR REPLACE FUNCTION MANAGER_A_CARGO(ID NUMBER)
+RETURN VARCHAR2 AS
+CURSOR C_EMP IS
+SELECT FIRST_NAME FROM EMPLOYEES WHERE MANAGER_ID = ID;
+REGISTRO C_EMP%ROWTYPE;
+CAD VARCHAR2(255) := '';
+BEGIN
+FOR REGISTRO IN C_EMP LOOP
+CAD:=CAD||REGISTRO.FIRST_NAME||', ';
+END LOOP;
+RETURN CAD;
+END;
+
+BEGIN
+DBMS_OUTPUT.PUT_LINE(MANAGER_A_CARGO(101));
+END;</code></pre></small>
+                  </li>
+              </ul>
+          </div>
+          <div class="text-center mt-4">
+            <a class="btn btn-xl btn-outline-secondary" href="docs/Oracle10gPLOracle.pdf">
+              <i class="fas fa-download mr-2"></i>
+              Descargar ejercicos en PDF Gratis!
+            </a>
+          </div>
         </div>
     </div> <!-- .content -->
 
@@ -124,7 +232,7 @@ SELECT GET_TOTAL_EMPLEADOS FROM DUAL;</code></pre></small>
       <div class="card-body">
           <ul class="list-group">
               <li class="list-group-item"><span class="m-l-10 text-secondary "><b>Ejercicios propuestos</b></li>
-              <!--<li class="list-group-item"><span class="m-l-10 text-secondary"> <a href="https://es.wikipedia.org/wiki/Normalización_de_bases_de_datos"><u>Wikipedia base de datos</u></a> <br></span>-->
+              <li class="list-group-item"> <p>Realizar una función que devuelva el pais donde pertenece un empleado dado el código del empleado.</p> </li>
           </ul>
       </div>
     </div> <!-- .content -->
